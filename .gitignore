@@ -1,0 +1,18 @@
+chatbot/.rasa
+chatbot/env
+chatbot/actions/*.json
+flaskApi/__pycache__
+flaskApi/product_images
+flaskApi/models/*.pkl
+node_modules
+env
+website/client/public/product_images
+website/server/product_images
+website/server/.env
+website/server/firebase-admin-sdk.json
+clothes-extraction/cloth_segm.pth
+flaskApi/.env
+__pycache__/
+*.pyc
+chatbot
+# build
