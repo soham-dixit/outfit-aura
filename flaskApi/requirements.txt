@@ -1,0 +1,14 @@
+Flask
+PILLOW
+numpy
+pandas
+requests
+scikit-learn
+opencv-python
+pyjwt
+azure-storage-blob
+flask_cors
+tensorflow
+firebase-admin
+openai
+google-generativeai
