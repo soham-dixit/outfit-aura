@@ -2,11 +2,11 @@
 
 *Your Style, Your Story: Fashion Reimagined with GenAI*
 
-Outfit Aura is a GenAI-powered fashion platform that enhances online shopping with personalized outfit recommendations, a virtual try-on feature, and culturally resonant fashion suggestions. Users can explore styles, receive real-time advice, and shop directly through Amazon, making fashion discovery interactive and confidence-boosting.
+Outfit Aura is a GenAI-powered fashion platform that redefines online shopping by making it personal, inclusive, and engaging. With features like personalized outfit recommendations, a virtual try-on, and culturally resonant style suggestions, Outfit Aura adapts to diverse backgrounds and speaks your language. Users can explore trends, receive real-time fashion advice, and shop effortlessly through Amazon, creating a truly global fashion experience.
 
 ### Key Features
 - **Personalized Style Recommendations**
-- **Conversational AI for Fashion Advice**
+- **Conversational AI for Multilingual Fashion Advice**
 - **Virtual Try-On for Confidence in Purchases**
 - **Up-to-Date Fashion Trends**
 - **Amazon Integration for Easy Shopping**
