@@ -1,8 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 import json
-from fake_useragent import UserAgent
-import time
 
 def get_title(soup):
     """Extracts the product title from the soup object."""
@@ -54,13 +52,19 @@ def get_availability(soup):
 
 
 def get_product_details(query):
-    ua = UserAgent()
-    # print(ua.chrome)
     """Scrapes product details from Amazon based on the search query."""
     URL = f"https://www.amazon.in/s?k={query}"
-    HEADERS = {'User-Agent': ua.chrome, 'Accept-Language': 'en-US, en;q=0.5','Referer': 'https://www.google.com/', 'DNT': '1'}
+    # HEADERS = {'User-Agent': '', 'Accept-Language': 'en-US, en;q=0.5'}
+    HEADERS = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
+        'Cookie': 'session-id=261-3895266-5041006; ubid-acbin=261-0208567-3617638; s_nr=1696746212308-New; s_vnum=2128746212308%26vn%3D1; s_dslv=1696746212309; s_nr365=1712474695314-New; s_vnc365=1744010695315%26vn%3D1; i18n-prefs=INR; lc-acbin=en_IN; at-acbin=Atza|IwEBIO3e12nljC4IveLEzWrBGTyr7-lvkLD3GlT2FXMhdUwRtsX8sx01wO9tXbSevAF_k1A_LJhKij9qzoih8dyLfRS2Ynj4YTv9QevI7iQYie2WEKkVUUEu3JK0gzjq1UVCnjB_fX9APqfpEHJTjt456AkLjoBFojkHXhXkjlXeUxBEbZFykvu8qyFUC1-IzDYZdp3jSzfNSdrQZ2_4Thj9uKRnI9vx3fSCvIrLO1JBZp42cQ; sess-at-acbin="2JKu83P3RL1BoPr4GnaGD4WJYazl+9rnj6bXFTKSaWo="; sst-acbin=Sst1|PQEMGa5A9vmQuDUxEZAVRa92CYJd1nWRWwrLfgIGTdD1jfoyEK0_b1nVJCRDRAzw2D7F3YBh_EotEQ1n77Xtfd2gQ8gGnjd-W5ngiLO7r6EGAvH8KFD9laNYhlLyh0Dtp-fDXDSKLaT3XhKadHPaTNamGUQLr7C8ZkC8cIWCX5u9hKhrDMunaBE4GwwOONmVp3hv3BO3pV_mnkrG9WhohTsGn_KRxpjrClV-atvLAtCl6tEjTDA9qxOJ2nrAce-KqpHnDgjwBwWVmB6CT_2GWuADI7K99tpHi8iShUe0vgdzBKQ; AMCV_A7493BC75245ACD20A490D4D%40AdobeOrg=1585540135%7CMCIDTS%7C20034%7CMCMID%7C17604896417187337583628946664247218309%7CMCAAMLH-1731521267%7C12%7CMCAAMB-1731521267%7CRKhpRz8krg2tLO6pguXWp5olkAcUniQYPHaMWWgdJ3xzPWQmdj0y%7CMCOPTOUT-1730923667s%7CNONE%7CMCAID%7CNONE%7CvVersion%7C4.4.0; ttc=1730916467902; s_ev15=%5B%5B%27NSGoogle%27%2C%271730916481435%27%5D%5D; x-acbin="CFewgtIZdoe?bzB@H27SYIY8bBbQ@YeF7GKc?ciwiUdyt8c?MQlH9Q5S9G2r5Qvp"; session-token=Rqp1nqBpI8XY7vOhUiysrE0Xp/pU59aBq09MWISI32bFHfxMrU7ces7hX5pc5zxuDyaqslionBouW2bxOzywkPvTef8EyC2lgyYMluIIvEwKl0/90Dj8fxGGBQqNPCGxunckX3k8hI7u1bp19+l8QTANWshc5Xdb5s0NKYXq8y5VzRpsgM84/kw/GXI7BakcDnq9UxdoxAKLeT2yBRb2k5WaLZExaxb6f6pe5Rlnh96NbYsFLZsL4s9rJ+HxfAxA1An5Q+5YY2nZDZxZhMrIdh2HmmAEx7KPze4Pr6fRnt3XzDLDTThlH4VHb/geFEuCLRDZgE/byCkVZIiSHfgrUqYZuzR0Reincqyb4+t+8HzTrk+jaPe7YRRoVEzRXKPt; session-id-time=2082787201l',
+        'Accept-Language': 'en-US, en;q=0.5',
+        'Origin': 'https://www.amazon.in',
+    }
     webpage = requests.get(URL, headers=HEADERS)
     soup = BeautifulSoup(webpage.content, "html.parser")
+    # print the html
+    print(soup.prettify())
 
     # Extracting product links
     links = soup.find_all("a", attrs={'class': 'a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal'})
@@ -72,12 +76,11 @@ def get_product_details(query):
     for link in links_list[:3]:
         amazon_url = "https://www.amazon.in" + link
         HEADERS = {
-            'User-Agent': ua.chrome,
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36',
+            'Cookie': 'session-id=261-3895266-5041006; ubid-acbin=261-0208567-3617638; s_nr=1696746212308-New; s_vnum=2128746212308%26vn%3D1; s_dslv=1696746212309; s_nr365=1712474695314-New; s_vnc365=1744010695315%26vn%3D1; i18n-prefs=INR; lc-acbin=en_IN; at-acbin=Atza|IwEBIO3e12nljC4IveLEzWrBGTyr7-lvkLD3GlT2FXMhdUwRtsX8sx01wO9tXbSevAF_k1A_LJhKij9qzoih8dyLfRS2Ynj4YTv9QevI7iQYie2WEKkVUUEu3JK0gzjq1UVCnjB_fX9APqfpEHJTjt456AkLjoBFojkHXhXkjlXeUxBEbZFykvu8qyFUC1-IzDYZdp3jSzfNSdrQZ2_4Thj9uKRnI9vx3fSCvIrLO1JBZp42cQ; sess-at-acbin="2JKu83P3RL1BoPr4GnaGD4WJYazl+9rnj6bXFTKSaWo="; sst-acbin=Sst1|PQEMGa5A9vmQuDUxEZAVRa92CYJd1nWRWwrLfgIGTdD1jfoyEK0_b1nVJCRDRAzw2D7F3YBh_EotEQ1n77Xtfd2gQ8gGnjd-W5ngiLO7r6EGAvH8KFD9laNYhlLyh0Dtp-fDXDSKLaT3XhKadHPaTNamGUQLr7C8ZkC8cIWCX5u9hKhrDMunaBE4GwwOONmVp3hv3BO3pV_mnkrG9WhohTsGn_KRxpjrClV-atvLAtCl6tEjTDA9qxOJ2nrAce-KqpHnDgjwBwWVmB6CT_2GWuADI7K99tpHi8iShUe0vgdzBKQ; AMCV_A7493BC75245ACD20A490D4D%40AdobeOrg=1585540135%7CMCIDTS%7C20034%7CMCMID%7C17604896417187337583628946664247218309%7CMCAAMLH-1731521267%7C12%7CMCAAMB-1731521267%7CRKhpRz8krg2tLO6pguXWp5olkAcUniQYPHaMWWgdJ3xzPWQmdj0y%7CMCOPTOUT-1730923667s%7CNONE%7CMCAID%7CNONE%7CvVersion%7C4.4.0; ttc=1730916467902; s_ev15=%5B%5B%27NSGoogle%27%2C%271730916481435%27%5D%5D; x-acbin="CFewgtIZdoe?bzB@H27SYIY8bBbQ@YeF7GKc?ciwiUdyt8c?MQlH9Q5S9G2r5Qvp"; session-token=Rqp1nqBpI8XY7vOhUiysrE0Xp/pU59aBq09MWISI32bFHfxMrU7ces7hX5pc5zxuDyaqslionBouW2bxOzywkPvTef8EyC2lgyYMluIIvEwKl0/90Dj8fxGGBQqNPCGxunckX3k8hI7u1bp19+l8QTANWshc5Xdb5s0NKYXq8y5VzRpsgM84/kw/GXI7BakcDnq9UxdoxAKLeT2yBRb2k5WaLZExaxb6f6pe5Rlnh96NbYsFLZsL4s9rJ+HxfAxA1An5Q+5YY2nZDZxZhMrIdh2HmmAEx7KPze4Pr6fRnt3XzDLDTThlH4VHb/geFEuCLRDZgE/byCkVZIiSHfgrUqYZuzR0Reincqyb4+t+8HzTrk+jaPe7YRRoVEzRXKPt; session-id-time=2082787201l',
             'Accept-Language': 'en-US, en;q=0.5',
-            'Referer': 'https://www.google.com/',
-            'DNT': '1'
+            'Origin': 'https://www.amazon.in',
         }
-        time.sleep(3)
         webpage = requests.get(amazon_url, headers=HEADERS)
         soup = BeautifulSoup(webpage.content, "html.parser")
 
