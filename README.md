@@ -1,3 +1,23 @@
+# Outfit Aura
+
+*Your Style, Your Story: Fashion Reimagined with GenAI*
+
+Outfit Aura is a GenAI-powered fashion platform that enhances online shopping with personalized outfit recommendations, a virtual try-on feature, and culturally resonant fashion suggestions. Users can explore styles, receive real-time advice, and shop directly through Amazon, making fashion discovery interactive and confidence-boosting.
+
+### Key Features
+- **Personalized Style Recommendations**
+- **Conversational AI for Fashion Advice**
+- **Virtual Try-On for Confidence in Purchases**
+- **Up-to-Date Fashion Trends**
+- **Amazon Integration for Easy Shopping**
+- **Cultural Sensitivity with Upcoming Festive Suggestions**
+
+### Technologies Used
+
+ReactJS, Node.js, Flask, MongoDB, SQL, Firebase, OpenAI, Stable Diffusion, Gemini
+
+---
+
 # Project Setup Guide
 
 ## Dataset
@@ -44,10 +64,44 @@
    pip install -r requirements.txt
    ```
 
-5. Run Flask Server
+5. Set Up Environment Variables
+Create a .env file in the flaskApi directory to store environment variables.
+   
+      ```bash
+      touch .env
+      ```
+   
+      Add the following environment variables to the .env file.
+   
+      ```bash
+      OPENAI_API_KEY=
+      GEMINI_API_KEY=
+      SEGMIND_API_KEY=
+      ```
+
+
+6. Run Flask Server
    ```bash
    python app.py
    ```
+
+## MYSQL Database Setup
+
+1. Ensure MySQL is installed and running on your system
+
+2. In the MySQL client, create a new database for the project
+   
+      ```sql
+      CREATE DATABASE fashionkart;
+      ```
+
+3. Import the fashionkart.sql file located in the root directory to set up the initial database structure and sample data
+   
+   ```bash
+   mysql -u username -p fashionkart < fashionkart.sql
+   ```
+   
+   Replace username with your MySQL username and provide your password when prompted.
 
 ## Website Server
 
