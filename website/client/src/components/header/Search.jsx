@@ -88,7 +88,7 @@ const Search = () => {
   return (
     <SearchContainer>
       <InputSearchBase
-        placeholder="Search for products, brands and more in FashionGen"
+        placeholder="Search for products, brands and more in Outfit Aura"
         onChange={(e) => getText(e.target.value)}
         value={text}
       />

@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.f6be9160.css",
-    "main.js": "/static/js/main.f9fbad56.js",
+    "main.js": "/static/js/main.8879111e.js",
     "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
     "static/media/Fashion.png": "/static/media/Fashion.9de0356c6e5c6d58c1f4.png",
     "static/media/image3.png": "/static/media/image3.bb4dd18f060306143b66.png",
@@ -10,14 +10,14 @@
     "static/media/revicons.ttf": "/static/media/revicons.57fd05d4ae650374c8de.ttf",
     "static/media/image1.png": "/static/media/image1.77a2e16c52b77940e243.png",
     "static/media/revicons.woff": "/static/media/revicons.e8746a624ed098489406.woff",
-    "static/media/fass.svg": "/static/media/fass.9fb888660a5ce5b4cae5483cc6b7f52f.svg",
+    "static/media/fass.svg": "/static/media/fass.6553ecb1a6712325f8fe658f112295f7.svg",
     "index.html": "/index.html",
     "main.f6be9160.css.map": "/static/css/main.f6be9160.css.map",
-    "main.f9fbad56.js.map": "/static/js/main.f9fbad56.js.map",
+    "main.8879111e.js.map": "/static/js/main.8879111e.js.map",
     "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f6be9160.css",
-    "static/js/main.f9fbad56.js"
+    "static/js/main.8879111e.js"
   ]
 }

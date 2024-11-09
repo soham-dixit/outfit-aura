@@ -10,7 +10,7 @@ import {
   IconButton,
   Drawer,
   List,
-  Button
+  Button,
 } from "@mui/material";
 
 import { Menu } from "@mui/icons-material";
@@ -21,7 +21,7 @@ import CustomButtons from "./CustomButtons";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../../axios/axios";
 import flask from "../../axios/flask";
-import img from "./Fashion.png"
+import img from "./Fashion.png";
 import { useSelector } from "react-redux";
 
 const StyledHeader = styled(AppBar)`
@@ -69,13 +69,13 @@ const Header = () => {
   const subUrl =
     "https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/plus_aef861.png";
 
-  const [buttonText, setButtonText] = useState('Reverse Product');
-  const [buttonColor, setButtonColor] = useState('#E5E4E2'); // default color for the button
-  const [txtc, settxtc] = useState('#000000'); // dfefault color for the button
+  const [buttonText, setButtonText] = useState("Reverse Product");
+  const [buttonColor, setButtonColor] = useState("#E5E4E2"); // default color for the button
+  const [txtc, settxtc] = useState("#000000"); // dfefault color for the button
 
-  const [tryOnButtonText, setTryOnButtonText] = useState('Try On');
-  const [tryOnbuttonColor, setTryOnButtonColor] = useState('#E5E4E2'); // default color for the button
-  const [txtcTry, settxtcTry] = useState('#000000');
+  const [tryOnButtonText, setTryOnButtonText] = useState("Try On");
+  const [tryOnbuttonColor, setTryOnButtonColor] = useState("#E5E4E2"); // default color for the button
+  const [txtcTry, settxtcTry] = useState("#000000");
 
   const { user } = useSelector((state) => state.user);
 
@@ -84,9 +84,9 @@ const Header = () => {
     if (file) {
       submitFile(event);
       // submitTryOnFile(event);
-      setButtonText('Uploaded');
-      setButtonColor('#0a2036ac');
-      settxtc('#ffffff')
+      setButtonText("Uploaded");
+      setButtonColor("#0a2036ac");
+      settxtc("#ffffff");
     }
   };
 
@@ -95,9 +95,9 @@ const Header = () => {
     if (file) {
       // submitFile(event);
       submitTryOnFile(event);
-      setTryOnButtonText('Uploaded');
-      setTryOnButtonColor('#0a2036ac');
-      settxtcTry('#ffffff')
+      setTryOnButtonText("Uploaded");
+      setTryOnButtonColor("#0a2036ac");
+      settxtcTry("#ffffff");
     }
   };
 
@@ -140,9 +140,12 @@ const Header = () => {
     const userId = user.userId;
     formData.append("userId", userId);
     console.log("userId", userId);
-  
+
     try {
-      const { data } = await axios.post("http://localhost:8000/api/v4/try-on", formData);
+      const { data } = await axios.post(
+        "http://localhost:8000/api/v4/try-on",
+        formData
+      );
       console.log(data); // Debug to see if the response is received
       navigate(`/`);
       setLoading(false);
@@ -163,7 +166,7 @@ const Header = () => {
   );
 
   return (
-    <StyledHeader position="fixed" style={{backgroundColor:'#15B392'}}>
+    <StyledHeader position="fixed" style={{ backgroundColor: "#15B392" }}>
       <Toolbar style={{ minHeight: 55 }}>
         <MenuButton aria-label="delete" color="inherit" onClick={handleOpen}>
           <Menu />
@@ -184,15 +187,17 @@ const Header = () => {
             </SubHeading>
             <PlusImg src={subUrl} alt="subLogo" />
           </Box> */}
-          <Typography style={{
-            fontWeight: 'bold',
-            fontSize: '24px',
-            color: 'inherit',
-            transition: 'color 0.3s ease',
-          }}
-            onMouseOver={(e) => e.currentTarget.style.color = '#267b69'}
-            onMouseOut={(e) => e.currentTarget.style.color = 'inherit'}>
-            FashionGen
+          <Typography
+            style={{
+              fontWeight: "bold",
+              fontSize: "24px",
+              color: "inherit",
+              transition: "color 0.3s ease",
+            }}
+            onMouseOver={(e) => (e.currentTarget.style.color = "#267b69")}
+            onMouseOut={(e) => (e.currentTarget.style.color = "inherit")}
+          >
+            Outfit Aura
           </Typography>
         </Component>
         <Search />
@@ -206,40 +211,46 @@ const Header = () => {
         >
           <input type="file" name="avatar" onChange={submitFile} />
         </form> */}
-        <form encType="multipart/form-data" style={{ marginLeft: '16px', cursor: 'pointer' }}>
+        <form
+          encType="multipart/form-data"
+          style={{ marginLeft: "16px", cursor: "pointer" }}
+        >
           <input
             type="file"
             name="avatar"
             accept="image/*" // only allow image files
             onChange={handleFileChange}
-            style={{ display: 'none' }}
+            style={{ display: "none" }}
             id="file-input"
           />
           <label htmlFor="file-input">
             <Button
               variant="contained"
               component="span"
-              style={{ backgroundColor: buttonColor, color:txtc}}
+              style={{ backgroundColor: buttonColor, color: txtc }}
             >
               {buttonText}
             </Button>
           </label>
         </form>
 
-        <form encType="multipart/form-data" style={{ marginLeft: '16px', cursor: 'pointer' }}>
+        <form
+          encType="multipart/form-data"
+          style={{ marginLeft: "16px", cursor: "pointer" }}
+        >
           <input
             type="file"
             name="file"
             accept="image/*" // only allow image files
             onChange={handleTryOnFileChange}
-            style={{ display: 'none' }}
+            style={{ display: "none" }}
             id="file-input1"
           />
           <label htmlFor="file-input1">
             <Button
               variant="contained"
               component="span"
-              style={{ backgroundColor: tryOnbuttonColor, color:txtcTry}}
+              style={{ backgroundColor: tryOnbuttonColor, color: txtcTry }}
             >
               {tryOnButtonText}
             </Button>
